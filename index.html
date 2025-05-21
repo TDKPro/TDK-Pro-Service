@@ -1,74 +1,622 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TDK&ProService – Oficjalny Opiekun Twoich Oszczędności</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TDK&ProService – Oficjalny Opiekun Oszczędności</title>
+  <meta name="description" content="TDK&ProService – Twój oficjalny opiekun oszczędności i energii. Diagnostyka, przeglądy, opieka premium.">
   <style>
-    body {
-      margin: 0;
-      background: #181818;
-      color: #fff;
-      font-family: 'Segoe UI', Arial, sans-serif;
+    body { margin:0; background:#181818; color:#fff; font-family:'Segoe UI',Arial,sans-serif; }
+    a, button { transition: background 0.2s, color 0.2s, box-shadow 0.18s; }
+    @media (max-width: 900px) {
+      .flex-cards { flex-direction: column; gap:26px !important; }
     }
-    section {
-      padding: 60px 20px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    a.button {
-      background: #ff8000;
-      color: #fff;
-      padding: 12px 30px;
-      border-radius: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 20px;
-    }
-    img.qr {
-      width: 120px;
-      margin: 20px auto;
-    }
-    @media (max-width: 768px) {
-      h1 { font-size: 1.8rem; }
-      section { padding: 40px 16px; }
+    @media (max-width: 700px) {
+      h1, h2 { font-size:1.3rem !important; }
+      .premium-section { padding:38px 4vw 36px 4vw !important; }
+      .offer-table th, .offer-table td { font-size:0.97rem !important; }
     }
   </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section id="hero">
-  <img src="TDK&ProService - Opiekun Oszczędności.png" alt="TDK&ProService" style="width:160px; margin-bottom:32px;" />
-  <h1 style="font-size:2.3rem; color:#ff8000;">TDK&ProService – Opiekun Twoich Oszczędności</h1>
-  <p style="font-size:1.1rem; color:#ddd;">Fotowoltaika. Pompy ciepła. Diagnostyka. Serwis. Efektywność.</p>
-  <a href="tel:691275254" class="button">Zadzwoń: 691 275 254</a>
-  <br><a href="https://m.me/TDKProService" class="button" style="background:#232323; color:#ff8000; border:2px solid #ff8000;">Napisz na Messengerze</a>
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://tdkpro.github.io/TDK-Pro-Service/" alt="QR do strony" class="qr" />
+  <!-- SEKCJA HERO + FORMULARZ -->
+  <section style="background:#181818; color:#fff; min-height:72vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:56px 16px 0 16px;">
+    <img src="TDK&ProService - Opiekun Oszczędności.png" alt="TDK&ProService – Oficjalny Opiekun Twoich Oszczędności" style="width:180px; margin-bottom:32px; filter:drop-shadow(0 4px 32px #000a);" />
+
+    <h1 style="font-size:2.45rem; font-weight:800; color:#ff8000; text-align:center; margin-bottom:14px; letter-spacing:1px; text-shadow:0 0 18px #ff800055;">
+      TDK&ProService – Oficjalny Opiekun Twoich Oszczędności
+    </h1>
+    <h2 style="font-size:1.17rem; color:#e0e0e0; text-align:center; margin-bottom:20px; font-weight:400;">
+      Twój lokalny ekspert od fotowoltaiki i pomp ciepła.<br>
+      Ratujemy, optymalizujemy, doradzamy – dla Twojego portfela.
+    </h2>
+
+    <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-bottom:24px;">
+      <a href="tel:691275254" style="background:#ff8000; color:#fff; padding:12px 34px; border-radius:18px; font-weight:700; text-decoration:none; font-size:1.04rem; box-shadow:0 4px 18px #ff80003d;">Zadzwoń</a>
+      <a href="https://m.me/TDKProService" style="background:#232323; color:#ff8000; padding:12px 34px; border:2px solid #ff8000; border-radius:18px; font-weight:700; text-decoration:none; font-size:1.04rem;">Messenger</a>
+      <a href="#formularz" style="background:#282828; color:#fff; padding:12px 34px; border-radius:18px; font-weight:700; text-decoration:none; font-size:1.04rem;">Umów konsultację</a>
+    </div>
+
+    <div style="font-size:1.04rem; color:#aaa; text-align:center; margin-bottom:28px;">
+      100+ uratowanych instalacji – Twoja może być następna.<br>
+      Działamy na terenie Pomorza Środkowego.
+    </div>
+
+    <form id="formularz" action="https://formspree.io/f/xbloeldk" method="POST" style="background:#232323; border-radius:22px; padding:38px 24px; box-shadow:0 4px 32px #0002; width:100%; max-width:430px; margin:0 auto 54px auto;">
+      <h3 style="color:#ff8000; text-align:center; margin-bottom:18px;">Napisz do nas</h3>
+      <label for="name" style="display:block; margin-bottom:8px;">Imię i nazwisko:</label>
+      <input type="text" id="name" name="name" required style="width:100%; padding:12px; margin-bottom:18px; border-radius:9px; border:none; background:#282828; color:#fff; font-size:1.06rem;">
+
+      <label for="email" style="display:block; margin-bottom:8px;">Adres e-mail:</label>
+      <input type="email" id="email" name="email" required style="width:100%; padding:12px; margin-bottom:18px; border-radius:9px; border:none; background:#282828; color:#fff; font-size:1.06rem;">
+
+      <label for="phone" style="display:block; margin-bottom:8px;">Telefon:</label>
+      <input type="tel" id="phone" name="phone" required style="width:100%; padding:12px; margin-bottom:18px; border-radius:9px; border:none; background:#282828; color:#fff; font-size:1.06rem;">
+
+      <label for="message" style="display:block; margin-bottom:8px;">Wiadomość:</label>
+      <textarea id="message" name="message" rows="4" required style="width:100%; padding:12px; border-radius:9px; border:none; background:#282828; color:#fff; margin-bottom:18px; font-size:1.06rem;"></textarea>
+
+      <button type="submit" style="width:100%; background:#ff8000; color:#fff; padding:15px; border:none; border-radius:14px; font-weight:800; font-size:1.14rem; margin-top:4px; cursor:pointer; box-shadow:0 2px 12px #ff800022;">Wyślij</button>
+    </form>
+  </section>
+
+  <div style="height:34px;"></div>
+
+  <!-- SEKCJA PREMIUM: POZNAJ TDK&ProService -->
+  <section class="premium-section" style="background:linear-gradient(135deg, #232323 80%, #ff8000 120%); color:#fff; padding:76px 0 66px 0; display:flex; flex-direction:column; align-items:center;">
+    <div style="max-width:1080px; width:96%; margin:0 auto;">
+      <h2 style="
+        font-size:2.5rem;
+        font-weight:900;
+        color:#fff;
+        margin-bottom:18px;
+        text-align:center;
+        letter-spacing:1.5px;
+        text-shadow:0 0 26px #ff8000, 0 2px 18px #000a;">
+        <span style="color:#ff8000;">Poznaj</span> TDK&ProService
+      </h2>
+      <div style="height:5px; width:60px; background:#ff8000; border-radius:3px; margin:0 auto 28px auto; box-shadow:0 0 12px #ff8000cc;"></div>
+      <div style="
+        background:rgba(24,24,24,0.93);
+        border-radius:26px;
+        padding:42px 34px 36px 34px;
+        box-shadow:0 8px 60px #ff800022, 0 2px 10px #0006;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        margin-bottom:26px;
+        ">
+        <p style="font-size:1.28rem; line-height:1.65; text-align:center; color:#f8f8f8; max-width:720px; margin-bottom:32px;">
+          <span style="font-size:1.48rem; font-weight:800; color:#ff8000; text-shadow:0 0 18px #ff800066;">Twój Oficjalny Opiekun Oszczędności i Energii</span><br><br>
+          <b>TDK&ProService</b> to nie tylko serwis – to <span style="color:#ff8000;">nowoczesny, niezależny partner</span> dla Twojego domu i firmy. Specjalizujemy się w diagnostyce, ratowaniu i optymalizacji fotowoltaiki oraz pomp ciepła.<br><br>
+          <span style="color:#ff8000; font-weight:600;">Rozwiązujemy to, czego inni się boją. Gwarantujemy skuteczność i bezpieczeństwo – zawsze lokalnie, zawsze na najwyższym poziomie.</span>
+        </p>
+        <div class="flex-cards" style="display:flex; flex-wrap:wrap; gap:32px; justify-content:center; margin:36px 0 16px 0;">
+          <div style="background:linear-gradient(130deg,#232323 65%,#ff8000 140%); border-radius:16px; padding:32px 38px; text-align:center; min-width:180px; box-shadow:0 2px 14px #0003;">
+            <div style="font-size:2.15rem; color:#ff8000; font-weight:900; letter-spacing:1px;">15+</div>
+            <div style="font-size:1.08rem; color:#fff; margin-top:4px;">lat doświadczenia</div>
+          </div>
+          <div style="background:linear-gradient(120deg,#232323 55%,#ff8000 120%); border-radius:16px; padding:32px 38px; text-align:center; min-width:180px; box-shadow:0 2px 14px #0003;">
+            <div style="font-size:2.15rem; color:#ff8000; font-weight:900; letter-spacing:1px;">100+</div>
+            <div style="font-size:1.08rem; color:#fff; margin-top:4px;">uratowanych instalacji</div>
+          </div>
+          <div style="background:linear-gradient(120deg,#232323 55%,#ff8000 120%); border-radius:16px; padding:32px 38px; text-align:center; min-width:180px; box-shadow:0 2px 14px #0003;">
+            <div style="font-size:2.15rem; color:#ff8000; font-weight:900; letter-spacing:1px;">4</div>
+            <div style="font-size:1.08rem; color:#fff; margin-top:4px;">powiaty w regionie</div>
+          </div>
+        </div>
+        <p style="font-size:1.09rem; color:#f8f8f8; max-width:500px; margin:20px auto 0 auto; text-align:center;">
+          <span style="color:#ff8000; font-weight:600;">Sławno, Słupsk, Darłowo, Koszalin</span> i okolice.<br>
+          Naprawiamy i chronimy energię w Twoim domu i biznesie.<br>
+          <span style="color:#aaa; font-size:1.02rem;">Zaufanie. Uczciwość. Techniczna perfekcja.</span>
+        </p>
+      </div>
+      <div style="text-align:center; color:#ff8000; font-size:1.09rem; font-weight:800; letter-spacing:1px; margin-top:18px;">
+        TDK&ProService – Twój Oficjalny Opiekun Oszczędności
+      </div>
+    </div>
+  </section>
+
+  <div style="height:34px;"></div>
+
+  <!-- SEKCJA: Pakiety Specjalistyczne TDK&ProService PREMIUM_MAXX -->
+<section style="background:linear-gradient(135deg,#181818 82%,#ff8000 150%); color:#fff; padding:66px 0 60px 0; display:flex; flex-direction:column; align-items:center;">
+  <div style="max-width:1260px; width:97%; margin:0 auto;">
+    <h2 style="font-size:2.3rem; font-weight:900; color:#ff8000; text-align:center; margin-bottom:22px; letter-spacing:1.5px; text-shadow:0 0 16px #ff800088;">
+      Pakiety Specjalistyczne TDK&ProService
+    </h2>
+    <div style="height:6px; width:76px; background:#ff8000; border-radius:3px; margin:0 auto 44px auto; box-shadow:0 0 12px #ff8000cc;"></div>
+    <div style="display:flex; flex-wrap:wrap; gap:44px; justify-content:center;">
+      
+      <!-- KARTA 1: Diagnostyka i Audyt Techniczny -->
+      <div style="background:rgba(24,24,24,0.96); border-radius:28px; box-shadow:0 8px 40px #ff800044; padding:38px 28px 30px 28px; max-width:340px; min-width:270px; flex:1;">
+        <h3 style="color:#ff8000; font-size:1.37rem; font-weight:800; text-align:center; margin-bottom:18px;">Diagnostyka i Audyt Techniczny</h3>
+        <ul style="font-size:1.09rem; color:#f8f8f8; margin-bottom:22px; line-height:1.6;">
+          <li>Ocena stanu PV lub pompy ciepła</li>
+          <li>Sprawdzenie montażu, konfiguracji i połączeń</li>
+          <li>Weryfikacja zgodności z projektem i normami</li>
+          <li>Wykrywanie błędów instalacyjnych</li>
+          <li>Raport techniczny z zaleceniami</li>
+        </ul>
+        <table style="width:100%; border-collapse:collapse; background:#232323; margin-bottom:14px;">
+          <thead>
+            <tr>
+              <th style="color:#ff8000; font-size:1.02rem; font-weight:700; padding:6px;">Działanie</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">Rynek</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">TDK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:6px;">Oględziny wizualne PV/PC</td>
+              <td style="color:#bbb; padding:6px;">300 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">240 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Pomiar napięć i prądów (PV)</td>
+              <td style="color:#bbb; padding:6px;">250 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">200 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Sprawdzenie zgodności z projektem</td>
+              <td style="color:#bbb; padding:6px;">300 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">240 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Weryfikacja podłączeń el./hydro</td>
+              <td style="color:#bbb; padding:6px;">400 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">320 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Identyfikacja błędów montażu</td>
+              <td style="color:#bbb; padding:6px;">300 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">240 zł</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="text-align:center; font-size:1.14rem; color:#ff8000; font-weight:900;">
+          Pakiet: 1 240 zł brutto
+        </div>
+      </div>
+      
+      <!-- KARTA 2: Korekta Błędów Montażowych -->
+      <div style="background:rgba(24,24,24,0.96); border-radius:28px; box-shadow:0 8px 40px #ff800044; padding:38px 28px 30px 28px; max-width:340px; min-width:270px; flex:1;">
+        <h3 style="color:#ff8000; font-size:1.37rem; font-weight:800; text-align:center; margin-bottom:18px;">Korekta Błędów Montażowych</h3>
+        <ul style="font-size:1.09rem; color:#f8f8f8; margin-bottom:22px; line-height:1.6;">
+          <li>Przemontowanie źle zamontowanych komponentów</li>
+          <li>Poprawa tras kablowych/hydraulicznych</li>
+          <li>Wymiana złych komponentów</li>
+          <li>Uszczelnienia, wyciszenia, zabezpieczenia</li>
+        </ul>
+        <table style="width:100%; border-collapse:collapse; background:#232323; margin-bottom:14px;">
+          <thead>
+            <tr>
+              <th style="color:#ff8000; font-size:1.02rem; font-weight:700; padding:6px;">Działanie</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">Rynek</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">TDK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:6px;">Przemontowanie modułu PV (1 szt.)</td>
+              <td style="color:#bbb; padding:6px;">300 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">240 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Korekta kąta/kierunku PV (10 szt.)</td>
+              <td style="color:#bbb; padding:6px;">1 200 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">960 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Poprawa tras kablowych (10 mb)</td>
+              <td style="color:#bbb; padding:6px;">600 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">480 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Uszczelnienie/wyciszenie jednostki PC</td>
+              <td style="color:#bbb; padding:6px;">500 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">400 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Wymiana złych komponentów</td>
+              <td style="color:#bbb; padding:6px;">400 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">320 zł</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="text-align:center; font-size:1.14rem; color:#ff8000; font-weight:900;">
+          Pakiet: 2 000 zł brutto
+        </div>
+      </div>
+      
+      <!-- KARTA 3: Regulacje Ustawień i Parametrów -->
+      <div style="background:rgba(24,24,24,0.96); border-radius:28px; box-shadow:0 8px 40px #ff800044; padding:38px 28px 30px 28px; max-width:340px; min-width:270px; flex:1;">
+        <h3 style="color:#ff8000; font-size:1.37rem; font-weight:800; text-align:center; margin-bottom:18px;">Regulacje Ustawień i Parametrów</h3>
+        <ul style="font-size:1.09rem; color:#f8f8f8; margin-bottom:22px; line-height:1.6;">
+          <li>Korekta parametrów falowników, pomp, zaworów</li>
+          <li>Optymalizacja wydajności układu</li>
+          <li>Programowanie harmonogramów</li>
+          <li>Balansowanie układów grzewczych/chłodzących</li>
+        </ul>
+        <table style="width:100%; border-collapse:collapse; background:#232323; margin-bottom:14px;">
+          <thead>
+            <tr>
+              <th style="color:#ff8000; font-size:1.02rem; font-weight:700; padding:6px;">Działanie</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">Rynek</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">TDK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:6px;">Regulacja MPPT falownika</td>
+              <td style="color:#bbb; padding:6px;">350 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">280 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Aktualizacja firmware falownika</td>
+              <td style="color:#bbb; padding:6px;">400 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">320 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Konfiguracja krzywej grzewczej PC</td>
+              <td style="color:#bbb; padding:6px;">500 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">400 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Ustawienia bufora, CWU, histerezy</td>
+              <td style="color:#bbb; padding:6px;">400 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">320 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Programowanie sterowników</td>
+              <td style="color:#bbb; padding:6px;">300 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">240 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Balansowanie pętli podłogówki</td>
+              <td style="color:#bbb; padding:6px;">500 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">400 zł</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="text-align:center; font-size:1.14rem; color:#ff8000; font-weight:900;">
+          Pakiet: 1 600 zł brutto
+        </div>
+      </div>
+      
+      <!-- KARTA 4: Optymalizacja Działania i Wydajności -->
+      <div style="background:rgba(24,24,24,0.96); border-radius:28px; box-shadow:0 8px 40px #ff800044; padding:38px 28px 30px 28px; max-width:340px; min-width:270px; flex:1;">
+        <h3 style="color:#ff8000; font-size:1.37rem; font-weight:800; text-align:center; margin-bottom:18px;">Optymalizacja Działania i Wydajności</h3>
+        <ul style="font-size:1.09rem; color:#f8f8f8; margin-bottom:22px; line-height:1.6;">
+          <li>Analiza efektywności energetycznej</li>
+          <li>Wdrożenie rozwiązań poprawiających sprawność</li>
+          <li>Usuwanie przyczyn niskich uzysków</li>
+          <li>Doradztwo w opłacalności eksploatacji</li>
+        </ul>
+        <table style="width:100%; border-collapse:collapse; background:#232323; margin-bottom:14px;">
+          <thead>
+            <tr>
+              <th style="color:#ff8000; font-size:1.02rem; font-weight:700; padding:6px;">Działanie</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">Rynek</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">TDK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:6px;">Analiza uzysków PV/zużycia energii</td>
+              <td style="color:#bbb; padding:6px;">600 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">480 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Optymalizacja pracy pomp/zaworów</td>
+              <td style="color:#bbb; padding:6px;">700 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">560 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Montaż czujnika + konfiguracja</td>
+              <td style="color:#bbb; padding:6px;">500 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">400 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Zmiana konfiguracji CWU/bufora</td>
+              <td style="color:#bbb; padding:6px;">500 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">400 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Korekta trybów sprężarki/eco</td>
+              <td style="color:#bbb; padding:6px;">400 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">320 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Szkolenie użytkownika (60 min)</td>
+              <td style="color:#bbb; padding:6px;">300 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">240 zł</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="text-align:center; font-size:1.14rem; color:#ff8000; font-weight:900;">
+          Pakiet: 2 000 zł brutto
+        </div>
+      </div>
+      
+      <!-- KARTA 5: Naprawy Pogwarancyjne i Serwis Reakcyjny -->
+      <div style="background:rgba(24,24,24,0.96); border-radius:28px; box-shadow:0 8px 40px #ff800044; padding:38px 28px 30px 28px; max-width:340px; min-width:270px; flex:1;">
+        <h3 style="color:#ff8000; font-size:1.37rem; font-weight:800; text-align:center; margin-bottom:18px;">Naprawy Pogwarancyjne i Serwis Reakcyjny</h3>
+        <ul style="font-size:1.09rem; color:#f8f8f8; margin-bottom:22px; line-height:1.6;">
+          <li>Szybka interwencja – awarie PV/PC</li>
+          <li>Naprawy mechaniczne, elektryczne, hydrauliczne</li>
+          <li>Wymiana uszkodzonych komponentów</li>
+          <li>Dokumentacja i protokoły serwisowe</li>
+        </ul>
+        <table style="width:100%; border-collapse:collapse; background:#232323; margin-bottom:14px;">
+          <thead>
+            <tr>
+              <th style="color:#ff8000; font-size:1.02rem; font-weight:700; padding:6px;">Działanie</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">Rynek</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">TDK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:6px;">Diagnostyka awarii na miejscu</td>
+              <td style="color:#bbb; padding:6px;">400 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">320 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Wymiana falownika</td>
+              <td style="color:#bbb; padding:6px;">900 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">720 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Wymiana pompy/zaworu/czujnika</td>
+              <td style="color:#bbb; padding:6px;">500 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">400 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Usunięcie przecieku</td>
+              <td style="color:#bbb; padding:6px;">600 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">480 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Czyszczenie lameli, filtrów, wym.</td>
+              <td style="color:#bbb; padding:6px;">300 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">240 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Rekonfiguracja systemu po awarii</td>
+              <td style="color:#bbb; padding:6px;">500 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">400 zł</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="text-align:center; font-size:1.14rem; color:#ff8000; font-weight:900;">
+          Pakiet: 1 200 zł brutto
+        </div>
+      </div>
+      
+      <!-- KARTA 6: Przeglądy Okresowe i Opieka Techniczna -->
+      <div style="background:rgba(24,24,24,0.96); border-radius:28px; box-shadow:0 8px 40px #ff800044; padding:38px 28px 30px 28px; max-width:340px; min-width:270px; flex:1;">
+        <h3 style="color:#ff8000; font-size:1.37rem; font-weight:800; text-align:center; margin-bottom:18px;">Przeglądy Okresowe i Opieka Techniczna</h3>
+        <ul style="font-size:1.09rem; color:#f8f8f8; margin-bottom:22px; line-height:1.6;">
+          <li>Przeglądy PV i pomp ciepła</li>
+          <li>Czyszczenie, kontrola, testy sprawności</li>
+          <li>Raport techniczny i zalecenia</li>
+          <li>Opieka serwisowa – abonament lub jednorazowo</li>
+          <li>Edukacja użytkownika końcowego</li>
+        </ul>
+        <table style="width:100%; border-collapse:collapse; background:#232323; margin-bottom:14px;">
+          <thead>
+            <tr>
+              <th style="color:#ff8000; font-size:1.02rem; font-weight:700; padding:6px;">Działanie</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">Rynek</th>
+              <th style="color:#fff; font-weight:500; padding:6px;">TDK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:6px;">Przegląd instalacji PV (do 10 kWp)</td>
+              <td style="color:#bbb; padding:6px;">500 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">400 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Przegląd pompy ciepła (pełny)</td>
+              <td style="color:#bbb; padding:6px;">600 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">480 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Czyszczenie komponentów</td>
+              <td style="color:#bbb; padding:6px;">300 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">240 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Sprawdzenie połączeń i zabezpieczeń</td>
+              <td style="color:#bbb; padding:6px;">300 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">240 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Testy sprawności / pomiary</td>
+              <td style="color:#bbb; padding:6px;">400 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">320 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Sporządzenie raportu i zaleceń</td>
+              <td style="color:#bbb; padding:6px;">250 zł</td>
+              <td style="color:#ff8000; font-weight:700; padding:6px;">200 zł</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="text-align:center; font-size:1.14rem; color:#ff8000; font-weight:900;">
+          Pakiet: 1 600 zł brutto
+        </div>
+      </div>
+
+    </div>
+    <div style="margin:44px auto 0 auto; text-align:center; color:#aaa; font-size:1.09rem; max-width:900px;">
+      <b>Każdy pakiet TDK&ProService to:</b> <span style="color:#ff8000;">pełna odpowiedzialność za efekt</span>, gwarancja lokalnej obsługi i serwisu oraz natychmiastowy dostęp do pomocy technicznej.<br>
+      <b>Jeden zespół, wszystko pod kontrolą – zawsze dla Twoich oszczędności i bezpieczeństwa.</b>
+    </div>
+  </div>
 </section>
-
-<!-- Skrypt do animacji fade-in -->
-<script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-  });
-</script>
-
+<!-- SEKCJA REFERENCJE / OPINIE KLIENTÓW – wklej pod pakietami -->
+<section style="background:linear-gradient(120deg,#181818 75%,#ff8000 130%); color:#fff; padding:64px 0 58px 0; display:flex; flex-direction:column; align-items:center;">
+  <div style="max-width:1140px; width:97%; margin:0 auto;">
+    <h2 style="font-size:2.1rem; font-weight:900; color:#ff8000; text-align:center; margin-bottom:26px; letter-spacing:1.2px;">
+      Opinie naszych klientów
+    </h2>
+    <div style="height:4px; width:54px; background:#ff8000; border-radius:2px; margin:0 auto 36px auto; box-shadow:0 0 8px #ff8000cc;"></div>
+    <div style="display:flex; flex-wrap:wrap; gap:40px; justify-content:center;">
+      <!-- OPINIA 1 -->
+      <div style="background:rgba(32,32,32,0.93); border-radius:20px; box-shadow:0 4px 24px #ff80003a; padding:34px 28px; max-width:340px; min-width:220px;">
+        <div style="font-size:1.06rem; color:#f8f8f8; margin-bottom:16px; font-style:italic;">
+          „Po wizytach innych serwisów tylko TDK wykryło błąd instalacji PV i przywróciło pełną moc. Rachunki spadły od razu!”
+        </div>
+        <div style="font-size:1.04rem; color:#ff8000; font-weight:700;">Beata z Darłowa</div>
+      </div>
+      <!-- OPINIA 2 -->
+      <div style="background:rgba(32,32,32,0.93); border-radius:20px; box-shadow:0 4px 24px #ff80003a; padding:34px 28px; max-width:340px; min-width:220px;">
+        <div style="font-size:1.06rem; color:#f8f8f8; margin-bottom:16px; font-style:italic;">
+          „Pompa ciepła po korekcie TDK działa ciszej i taniej, a ja wreszcie śpię spokojnie. Super kontakt, pełna kultura.”
+        </div>
+        <div style="font-size:1.04rem; color:#ff8000; font-weight:700;">Michał ze Słupska</div>
+      </div>
+      <!-- OPINIA 3 -->
+      <div style="background:rgba(32,32,32,0.93); border-radius:20px; box-shadow:0 4px 24px #ff80003a; padding:34px 28px; max-width:340px; min-width:220px;">
+        <div style="font-size:1.06rem; color:#f8f8f8; margin-bottom:16px; font-style:italic;">
+          „Serwis opieki TDK to pewność na lata. Fachowcy, którzy tłumaczą wszystko prosto i naprawdę dbają o klienta.”
+        </div>
+        <div style="font-size:1.04rem; color:#ff8000; font-weight:700;">Andrzej, okolice Koszalina</div>
+      </div>
+    </div>
+    <div style="text-align:center; color:#aaa; font-size:1.07rem; margin:38px auto 0 auto;">
+      <b>Dołącz do grona zadowolonych klientów!</b> TDK&ProService – Twoje bezpieczeństwo, Twój zysk, Twój wybór.
+    </div>
+  </div>
+</section>
+<!-- SEKCJA KORZYŚCI / ROI – wklej pod opiniami klientów -->
+<section style="background:linear-gradient(120deg,#232323 78%,#ff8000 120%); color:#fff; padding:62px 0 50px 0; display:flex; flex-direction:column; align-items:center;">
+  <div style="max-width:1120px; width:97%; margin:0 auto;">
+    <h2 style="font-size:2.08rem; font-weight:900; color:#ff8000; text-align:center; margin-bottom:22px; letter-spacing:1.1px;">
+      Dlaczego warto? – Twoje korzyści
+    </h2>
+    <div style="height:4px; width:52px; background:#ff8000; border-radius:2px; margin:0 auto 36px auto; box-shadow:0 0 8px #ff8000cc;"></div>
+    <div style="display:flex; flex-wrap:wrap; gap:32px; justify-content:center; margin-bottom:22px;">
+      <!-- KORZYŚĆ 1 -->
+      <div style="background:rgba(32,32,32,0.92); border-radius:18px; padding:28px 22px; min-width:220px; max-width:300px; box-shadow:0 3px 16px #ff80003a;">
+        <div style="font-size:2.2rem; color:#ff8000; font-weight:800; text-align:center; margin-bottom:12px;">+15%</div>
+        <div style="font-size:1.06rem; color:#fff; text-align:center;">Więcej energii z tej samej instalacji po optymalizacji</div>
+      </div>
+      <!-- KORZYŚĆ 2 -->
+      <div style="background:rgba(32,32,32,0.92); border-radius:18px; padding:28px 22px; min-width:220px; max-width:300px; box-shadow:0 3px 16px #ff80003a;">
+        <div style="font-size:2.2rem; color:#ff8000; font-weight:800; text-align:center; margin-bottom:12px;">–30%</div>
+        <div style="font-size:1.06rem; color:#fff; text-align:center;">Niższe rachunki dzięki właściwej regulacji i kontroli pracy</div>
+      </div>
+      <!-- KORZYŚĆ 3 -->
+      <div style="background:rgba(32,32,32,0.92); border-radius:18px; padding:28px 22px; min-width:220px; max-width:300px; box-shadow:0 3px 16px #ff80003a;">
+        <div style="font-size:2.2rem; color:#ff8000; font-weight:800; text-align:center; margin-bottom:12px;">24/7</div>
+        <div style="font-size:1.06rem; color:#fff; text-align:center;">Dostęp do serwisu i opieki technicznej – zawsze, gdy potrzebujesz</div>
+      </div>
+      <!-- KORZYŚĆ 4 -->
+      <div style="background:rgba(32,32,32,0.92); border-radius:18px; padding:28px 22px; min-width:220px; max-width:300px; box-shadow:0 3px 16px #ff80003a;">
+        <div style="font-size:2.2rem; color:#ff8000; font-weight:800; text-align:center; margin-bottom:12px;">0 zł</div>
+        <div style="font-size:1.06rem; color:#fff; text-align:center;">Koszt napraw gwarancyjnych w ramach opieki TDK</div>
+      </div>
+    </div>
+    <div style="text-align:center; color:#aaa; font-size:1.07rem; margin:36px auto 0 auto;">
+      <b>Inwestujesz raz – oszczędzasz przez lata.</b> Tylko profesjonalna diagnostyka, korekta i opieka techniczna to gwarancja maksymalnych efektów!
+    </div>
+  </div>
+</section>
+<!-- SEKCJA JAK PRACUJEMY / PROCES – wklej pod korzyściami -->
+<section style="background:linear-gradient(120deg,#232323 80%,#ff8000 130%); color:#fff; padding:62px 0 54px 0; display:flex; flex-direction:column; align-items:center;">
+  <div style="max-width:1100px; width:97%; margin:0 auto;">
+    <h2 style="font-size:2.1rem; font-weight:900; color:#ff8000; text-align:center; margin-bottom:26px; letter-spacing:1.2px;">
+      Jak wygląda współpraca z TDK&ProService?
+    </h2>
+    <div style="height:4px; width:56px; background:#ff8000; border-radius:2px; margin:0 auto 38px auto; box-shadow:0 0 8px #ff8000cc;"></div>
+    <div style="display:flex; flex-wrap:wrap; gap:34px; justify-content:center;">
+      <!-- KROK 1 -->
+      <div style="background:rgba(32,32,32,0.93); border-radius:18px; padding:28px 24px; min-width:170px; max-width:250px; text-align:center; box-shadow:0 3px 18px #ff80003a;">
+        <div style="font-size:2.15rem; color:#ff8000; font-weight:900;">1</div>
+        <div style="font-size:1.09rem; color:#fff;">Zgłaszasz problem lub chęć przeglądu</div>
+      </div>
+      <!-- KROK 2 -->
+      <div style="background:rgba(32,32,32,0.93); border-radius:18px; padding:28px 24px; min-width:170px; max-width:250px; text-align:center; box-shadow:0 3px 18px #ff80003a;">
+        <div style="font-size:2.15rem; color:#ff8000; font-weight:900;">2</div>
+        <div style="font-size:1.09rem; color:#fff;">Umawiamy dogodny termin wizyty technika</div>
+      </div>
+      <!-- KROK 3 -->
+      <div style="background:rgba(32,32,32,0.93); border-radius:18px; padding:28px 24px; min-width:170px; max-width:250px; text-align:center; box-shadow:0 3px 18px #ff80003a;">
+        <div style="font-size:2.15rem; color:#ff8000; font-weight:900;">3</div>
+        <div style="font-size:1.09rem; color:#fff;">Diagnozujemy, raportujemy i przedstawiamy opcje naprawy/opt.</div>
+      </div>
+      <!-- KROK 4 -->
+      <div style="background:rgba(32,32,32,0.93); border-radius:18px; padding:28px 24px; min-width:170px; max-width:250px; text-align:center; box-shadow:0 3px 18px #ff80003a;">
+        <div style="font-size:2.15rem; color:#ff8000; font-weight:900;">4</div>
+        <div style="font-size:1.09rem; color:#fff;">Realizujemy serwis, korektę, optymalizację</div>
+      </div>
+      <!-- KROK 5 -->
+      <div style="background:rgba(32,32,32,0.93); border-radius:18px; padding:28px 24px; min-width:170px; max-width:250px; text-align:center; box-shadow:0 3px 18px #ff80003a;">
+        <div style="font-size:2.15rem; color:#ff8000; font-weight:900;">5</div>
+        <div style="font-size:1.09rem; color:#fff;">Otrzymujesz gwarancję efektu i wsparcie opiekuna</div>
+      </div>
+    </div>
+    <div style="text-align:center; color:#aaa; font-size:1.07rem; margin:38px auto 0 auto;">
+      <b>TDK&ProService – prosty proces, realny efekt, zero stresu.</b>
+    </div>
+  </div>
+</section>
+<!-- SEKCJA FAQ – wklej pod procesem TDK -->
+<section style="background:#181818; color:#fff; padding:62px 0 54px 0; display:flex; flex-direction:column; align-items:center;">
+  <div style="max-width:900px; width:98%; margin:0 auto;">
+    <h2 style="font-size:2.1rem; font-weight:900; color:#ff8000; text-align:center; margin-bottom:28px; letter-spacing:1.2px;">
+      Najczęściej zadawane pytania (FAQ)
+    </h2>
+    <div style="height:4px; width:44px; background:#ff8000; border-radius:2px; margin:0 auto 38px auto; box-shadow:0 0 8px #ff8000cc;"></div>
+    <details style="background:#232323; border-radius:12px; margin-bottom:14px; padding:20px 24px; box-shadow:0 2px 10px #00000024;">
+      <summary style="cursor:pointer; color:#ff8000; font-size:1.13rem; font-weight:700;">Czy mogę zamówić samą diagnostykę bez serwisu?</summary>
+      <div style="color:#eee; margin-top:12px;">Tak – wykonujemy zarówno samą diagnostykę, jak i pełny serwis. Po analizie sam decydujesz, co dalej!</div>
+    </details>
+    <details style="background:#232323; border-radius:12px; margin-bottom:14px; padding:20px 24px; box-shadow:0 2px 10px #00000024;">
+      <summary style="cursor:pointer; color:#ff8000; font-size:1.13rem; font-weight:700;">Czy obsługujecie gwarancje innych firm?</summary>
+      <div style="color:#eee; margin-top:12px;">Tak – pomagamy również w sytuacjach pogwarancyjnych lub przy problemach z innymi serwisami. Sprawdzimy, doradzimy, poprawimy.</div>
+    </details>
+    <details style="background:#232323; border-radius:12px; margin-bottom:14px; padding:20px 24px; box-shadow:0 2px 10px #00000024;">
+      <summary style="cursor:pointer; color:#ff8000; font-size:1.13rem; font-weight:700;">Ile kosztuje konsultacja/wycena?</summary>
+      <div style="color:#eee; margin-top:12px;">Wstępna konsultacja i wycena są zawsze bezpłatne. Zależy nam na szczerym doradztwie.</div>
+    </details>
+    <details style="background:#232323; border-radius:12px; margin-bottom:14px; padding:20px 24px; box-shadow:0 2px 10px #00000024;">
+      <summary style="cursor:pointer; color:#ff8000; font-size:1.13rem; font-weight:700;">Czy pomagacie w obsłudze urządzeń po optymalizacji?</summary>
+      <div style="color:#eee; margin-top:12px;">Tak – przeszkolimy Cię i Twoją rodzinę z obsługi oraz wyjaśnimy wszystko krok po kroku.</div>
+    </details>
+    <details style="background:#232323; border-radius:12px; margin-bottom:14px; padding:20px 24px; box-shadow:0 2px 10px #00000024;">
+      <summary style="cursor:pointer; color:#ff8000; font-size:1.13rem; font-weight:700;">Jak mogę zamówić usługę najszybciej?</summary>
+      <div style="color:#eee; margin-top:12px;">Najprościej przez formularz kontaktowy na górze lub telefon 691-275-254. Odezwiemy się w 24h.</div>
+    </details>
+  </div>
+</section>
+<!-- SEKCJA STOPKA PREMIUM – na samym dole strony -->
+<footer style="background:#181818; color:#fff; padding:44px 0 28px 0; text-align:center;">
+  <img src="TDK&ProService - Opiekun Oszczędności.png" alt="TDK&ProService" style="width:110px; margin-bottom:22px; filter:drop-shadow(0 2px 16px #ff800066);"><br>
+  <div style="font-size:1.13rem; color:#ff8000; font-weight:700; margin-bottom:8px;">
+    TDK&ProService – Oficjalny Opiekun Twoich Oszczędności
+  </div>
+  <div style="font-size:1.02rem; color:#ddd; margin-bottom:12px;">
+    Sławno – Słupsk – Darłowo – Koszalin i okolice
+  </div>
+  <div style="font-size:1rem; color:#aaa; margin-bottom:10px;">
+    tel. <a href="tel:691275254" style="color:#ff8000; text-decoration:none; font-weight:700;">691 275 254</a>  
+    |  
+    e-mail: <a href="mailto:tdkproservice@onet.pl" style="color:#ff8000; text-decoration:none; font-weight:700;">tdkproservice@onet.pl</a>
+  </div>
+  <div style="font-size:1rem; color:#aaa;">
+    Messenger: <a href="https://m.me/TDKProService" style="color:#ff8000; text-decoration:none;">@TDKProService</a>  
+    |  
+    <a href="#" style="color:#aaa; text-decoration:underline; margin-left:4px;">Polityka prywatności / RODO</a>
+  </div>
+  <div style="color:#555; font-size:0.97rem; margin-top:18px;">
+    &copy; 2024 TDK&Pro Service. Wszelkie prawa zastrzeżone.
+  </div>
+</footer>
 </body>
 </html>
